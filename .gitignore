@@ -1,0 +1,40 @@
+# METEOR Snakemake Pipeline Files
+
+# Snakemake workflow files
+Snakefile
+config.yaml
+config_test.yaml
+
+# Environment files
+envs/
+
+# Input data (user-provided)
+data/
+
+# Output results
+results/
+test_results/
+
+# Temporary files
+.snakemake/
+temp_*/
+
+# Log files
+*.log
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
