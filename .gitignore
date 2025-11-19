@@ -1,12 +1,7 @@
 # METEOR Snakemake Pipeline Files
 
-# Snakemake workflow files
-Snakefile
-config.yaml
+# Test configuration (user-specific)
 config_test.yaml
-
-# Environment files
-envs/
 
 # Input data (user-provided)
 data/

@@ -1,0 +1,27 @@
+# METEOR Shotgun Metagenomics Pipeline Configuration
+
+# Input/Output directories
+input_dir: "data/fastq"           # Directory containing paired-end FASTQ files (*_R1*.fastq.gz, *_R2*.fastq.gz)
+output_dir: "results"             # Output directory for final results
+
+# Catalogue configuration (choose one)
+catalogue_name: "hs_10_4_gut"     # Prebuilt catalogue name (see allowed_catalogues below)
+# catalogue_path: ""              # Path to custom catalogue (overrides catalogue_name if provided)
+
+# Processing options
+cpus: 4                          # Number of CPU cores to use
+fast: false                      # Enable fast mode (no functional analysis, only taxonomic)
+check_catalogue: false           # Check MD5sum of catalogue compatibility with reads
+minimum_memory_gb: 30            # Minimum memory in GB for memory-intensive steps
+
+# Allowed prebuilt catalogue names:
+# - fc_1_3_gut      (Felis catus - cat gut)
+# - gg_13_6_caecal  (Gallus gallus domesticus - chicken caecal)
+# - clf_1_0_gut     (Canis lupus familiaris - dog gut)
+# - hs_10_4_gut     (Homo sapiens gut)
+# - hs_8_4_oral     (Homo sapiens oral)
+# - hs_2_9_skin     (Homo sapiens skin)
+# - mm_5_0_gut      (Mus musculus - mouse gut)
+# - oc_5_7_gut      (Oryctolagus cuniculus - rabbit gut)
+# - rn_5_9_gut      (Rattus norvegicus - rat gut)
+# - ssc_9_3_gut     (Sus domesticus - pig gut)

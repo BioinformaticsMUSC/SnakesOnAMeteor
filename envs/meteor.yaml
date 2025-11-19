@@ -1,0 +1,9 @@
+name: meteor
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python>=3.11
+  - meteor=2.0.21
+  - bowtie2>=2.3.5
+  - freebayes>=1.3.6
