@@ -14,7 +14,7 @@ mkdir -p test_results
 
 # Create minimal test FASTQ files (empty but with correct format)
 echo "Creating test FASTQ files..."
-cat > data/fastq/sample1_R1.fastq.gz << 'EOF'
+cat > data/fastq/sample1_R1.fastq << 'EOF'
 H4:
 @seq1
 ATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCG
@@ -26,7 +26,7 @@ GCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCT
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 EOF
 
-cat > data/fastq/sample1_R2.fastq.gz << 'EOF'
+cat > data/fastq/sample1_R2.fastq << 'EOF'
 @seq1
 CGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGAT
 +

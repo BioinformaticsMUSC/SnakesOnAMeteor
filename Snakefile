@@ -134,8 +134,20 @@ rule meteor_fastq:
         cp {input.r1} {params.sample_dir}/
         cp {input.r2} {params.sample_dir}/
         
-        # Run meteor fastq
-        meteor fastq -i {params.sample_dir} -p -o {output}
+        # Run meteor fastq - this creates a subdirectory for the sample
+        meteor fastq -i {params.sample_dir} -p -o temp_fastq_{wildcards.sample}
+        
+        # Move the sample-specific output to the expected location
+        mkdir -p {output}
+        mv temp_fastq_{wildcards.sample}/*/* {output}/
+        rmdir temp_fastq_{wildcards.sample}/*/
+        rmdir temp_fastq_{wildcards.sample}
+        
+        # Ensure we have the census file (should be created by meteor fastq)
+        if [ ! -f {output}/*_census_stage_0.json ]; then
+            echo "ERROR: No census file created by meteor fastq"
+            exit 1
+        fi
         """
 
 # Mapping reads to catalogue
@@ -154,6 +166,13 @@ rule meteor_mapping:
         "envs/meteor.yaml"
     shell:
         """
+        # Check that we have the required census file
+        census_file=$(ls {input.fastq_dir}/*_census_stage_0.json 2>/dev/null | head -1)
+        if [ -z "$census_file" ]; then
+            echo "ERROR: No *_census_stage_0.json file found in {input.fastq_dir}"
+            exit 1
+        fi
+        
         meteor mapping -i {input.fastq_dir} -r {input.catalogue} -t {threads} -o {output} --kf
         """
 
